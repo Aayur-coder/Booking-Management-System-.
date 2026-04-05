@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Bookings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dynamic-background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <main class="container">
+        <!-- Auth Section -->
+        <section id="auth-section" class="glass-card active fade-in">
+            <div class="card-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to manage your premium bookings</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <span>Sign In</span>
+                    <div class="loader hidden"></div>
+                </button>
+            </form>
+        </section>
+
+        <!-- App Section -->
+        <section id="app-section" class="app-layout hidden">
+            <header class="glass-header">
+                <div class="logo">
+                    <h2>Bookings<span>Pro</span></h2>
+                </div>
+                <button id="logout-btn" class="btn btn-outline">Sign Out</button>
+            </header>
+
+            <div class="content-grid">
+                <!-- Create Booking -->
+                <div class="glass-card fade-in delay-1">
+                    <div class="card-header">
+                        <h2>New Booking</h2>
+                        <p>Reserve a new resource</p>
+                    </div>
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="userId">User ID</label>
+                           <input type="text" value="Auto-filled" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="resource">Resource</label>
+                            <select id="resource" required>
+                                <option value="" disabled selected>Select a resource</option>
+                                <option value="Meeting Room A">Meeting Room A</option>
+                                <option value="Meeting Room B">Meeting Room B</option>
+                                <option value="Projector Setup">Projector Setup</option>
+                                <option value="Studio Workspace">Studio Workspace</option>
+                            </select>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group w-50">
+                                <label for="date">Date</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div class="form-group w-50">
+                                <label for="time">Time</label>
+                                <input type="time" id="time" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4">
+                            <span>Confirm Booking</span>
+                            <div class="loader hidden"></div>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- View Bookings -->
+                <div class="glass-card fade-in delay-2 d-flex flex-column h-100">
+                    <div class="card-header d-flex justify-between align-center">
+                        <div>
+                            <h2>My Bookings</h2>
+                            <p>Your upcoming reservations</p>
+                        </div>
+                        <button id="refresh-bookings-btn" class="icon-btn" title="Refresh">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="bookings-list-container scrollable">
+                        <div id="bookings-loader" class="loader-container">
+                            <div class="loader lg"></div>
+                        </div>
+                        <div id="no-bookings" class="empty-state hidden">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <p>No bookings found.</p>
+                            <span>Create one to get started!</span>
+                        </div>
+                        <ul id="bookings-list" class="bookings-list hidden">
+                            <!-- Populated by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
