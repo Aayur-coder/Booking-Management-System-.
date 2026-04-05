@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://booking-management-system-wt5j.onrender.com/api';  
 
 const formatDate = (dateStr) => {
     const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
